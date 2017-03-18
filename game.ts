@@ -1,4 +1,12 @@
-﻿var canvas: HTMLCanvasElement;
+﻿//Copyright 2017 plasma-effect
+
+//    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+//The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+var canvas: HTMLCanvasElement;
 var ctx: CanvasRenderingContext2D;
 
 function write_text(text: string, x: number, y: number, color: string, size: number = 1)
@@ -856,7 +864,6 @@ function clicked(e: MouseEvent)
 {
     var x = e.pageX - canvas.offsetLeft + window.pageXOffset;
     var y = e.pageY - canvas.offsetTop + window.pageYOffset;
-    console.log("(" + x + "," + y + ")");
     if (mode == mode_t.title)
     {
         if (310 < y && y < 350)
@@ -916,7 +923,7 @@ function clicked(e: MouseEvent)
             if (0 < x && x < 320 && 300 < y && y < 360)
             {
                 var url = "http://plasma-effect.github.io/Aho22/main.html";
-                var text = encodeURIComponent("「パターセイバー」難易度" + level_string[stageobj.get_level()] + "でscore" + score + "点を獲得しました！");
+                var text = encodeURIComponent("「パターセイバー」難易度" + level_string[stageobj.get_level()] + "でscore:" + score + "点を獲得しました！");
                 var tag = "putter_savior";
                 window.open("https://twitter.com/intent/tweet?text=" + text + "&hashtags=" + tag + "&url=" + url);
             }
