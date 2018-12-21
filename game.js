@@ -1,9 +1,17 @@
 //Copyright 2017 plasma-effect
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 //    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 //The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -82,7 +90,7 @@ function addbullet(x, y, speed, angle, size, color) {
         }
     }
 }
-var person = (function () {
+var person = /** @class */ (function () {
     function person() {
         this.x = 320 - 50;
         this.y = 50;
@@ -112,7 +120,7 @@ var person = (function () {
     };
     return person;
 }());
-var flag = (function () {
+var flag = /** @class */ (function () {
     function flag() {
         this.x = 640;
     }
@@ -125,7 +133,7 @@ var flag = (function () {
     };
     return flag;
 }());
-var wood = (function () {
+var wood = /** @class */ (function () {
     function wood() {
         this.x = 640;
         this.y = 0;
@@ -150,7 +158,7 @@ var wood = (function () {
     };
     return wood;
 }());
-var bullet = (function () {
+var bullet = /** @class */ (function () {
     function bullet(x, y, xspeed, yspeed, size, color) {
         this.x = x;
         this.y = y;
@@ -193,7 +201,7 @@ var bullet = (function () {
 }());
 var birds;
 (function (birds) {
-    var basic_bird = (function () {
+    var basic_bird = /** @class */ (function () {
         function basic_bird(image, speed) {
             this.image = image;
             this.speed = speed;
@@ -229,7 +237,7 @@ var birds;
         return basic_bird;
     }());
     birds.basic_bird = basic_bird;
-    var reverse_basic_bird = (function () {
+    var reverse_basic_bird = /** @class */ (function () {
         function reverse_basic_bird(image, speed) {
             this.image = image;
             this.speed = speed;
@@ -269,7 +277,7 @@ var birds;
         return reverse_basic_bird;
     }());
     birds.reverse_basic_bird = reverse_basic_bird;
-    var ufos = (function () {
+    var ufos = /** @class */ (function () {
         function ufos(x, y, speed) {
             this.x = x;
             this.y = y;
@@ -303,7 +311,7 @@ var birds;
         return ufos;
     }());
     birds.ufos = ufos;
-    var bullet_bird = (function (_super) {
+    var bullet_bird = /** @class */ (function (_super) {
         __extends(bullet_bird, _super);
         function bullet_bird() {
             var _this = _super.call(this, tori, 3) || this;
@@ -325,7 +333,7 @@ var birds;
         return bullet_bird;
     }(basic_bird));
     birds.bullet_bird = bullet_bird;
-    var reverse_bullet_bird = (function (_super) {
+    var reverse_bullet_bird = /** @class */ (function (_super) {
         __extends(reverse_bullet_bird, _super);
         function reverse_bullet_bird() {
             var _this = _super.call(this, tori, 3) || this;
@@ -350,7 +358,7 @@ var birds;
 })(birds || (birds = {}));
 var stages;
 (function (stages) {
-    var easy = (function () {
+    var easy = /** @class */ (function () {
         function easy() {
             this.time = 0;
         }
@@ -392,7 +400,7 @@ var stages;
         return easy;
     }());
     stages.easy = easy;
-    var normal = (function () {
+    var normal = /** @class */ (function () {
         function normal() {
             var _this = this;
             this.time = -100;
@@ -446,7 +454,7 @@ var stages;
         return normal;
     }());
     stages.normal = normal;
-    var hard = (function () {
+    var hard = /** @class */ (function () {
         function hard() {
             this.time = -100;
         }
@@ -722,18 +730,12 @@ window.onload = function () {
     title = load_image("data/title.png");
     ufo = load_image("data/ufo.png");
     mode = mode_t.title;
-    haikei.onload = function () {
-        tori.onload = function () {
-            hito.onload = function () {
-                ki.onload = function () {
-                    hata.onload = function () {
-                        title.onload = function () {
-                            setInterval(loop, 20);
-                        };
-                    };
-                };
-            };
-        };
+    var i = 0;
+    haikei.onload = tori.onload = hito.onload = ki.onload = hata.onload = title.onload = function () {
+        ++i;
+        if (i == 6) {
+            setInterval(loop, 20);
+        }
     };
 };
 //# sourceMappingURL=game.js.map

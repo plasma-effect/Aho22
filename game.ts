@@ -951,23 +951,13 @@ window.onload = () =>
     title = load_image("data/title.png");
     ufo = load_image("data/ufo.png");
     mode = mode_t.title;
-    haikei.onload = () =>
-    {
-        tori.onload = () =>
+    var i = 0;
+    haikei.onload = tori.onload = hito.onload = ki.onload = hata.onload = title.onload = () => {
+        ++i;
+        if (i == 6)
         {
-            hito.onload = () =>
-            {
-                ki.onload = () =>
-                {
-                    hata.onload = () =>
-                    {
-                        title.onload = () =>
-                        {
-                            setInterval(loop, 20);
-                        }
-                    }
-                }
-            }
+            setInterval(loop, 20);
         }
     }
+     
 }
